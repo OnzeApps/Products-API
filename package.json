@@ -1,0 +1,17 @@
+{
+  "name": "produtos---api",
+  "version": "1.0.0",
+  "description": "API para add, deletar e obter produtos",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "OnzeApp's",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "helmet": "^7.0.0"
+  }
+}
