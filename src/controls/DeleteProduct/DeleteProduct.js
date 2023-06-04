@@ -6,9 +6,9 @@ function DeleteProduct(req, res) {
     const path = './database/database.json';
     const objects = fs.readFileSync(path, 'utf-8');
     const dados = JSON.parse(objects);
-    const ID = req.body.id
+    const { id } = req.params;
     
-    const find = dados.findIndex(item => item.id === ID);
+    const find = dados.findIndex(item => item.id === id);
     
     dados.splice(find, 1);
     const AttJson= JSON.stringify(dados);
@@ -16,12 +16,12 @@ function DeleteProduct(req, res) {
     
     return res.status(200).json({
       'success': 'true',
-      'message': `Produto ${req.body.id} foi deletado.`
+      'message': `Produto ${id} deletado.`
     })
     
   } catch(error) {
     
-    return res.status(400).json({
+    return res.status(401).json({
       'success': 'false',
       'message': error.message
     })

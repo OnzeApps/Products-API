@@ -29,7 +29,11 @@ function PostProducts(req, res) {
       
       fs.readFile('./database/database.json', 'utf8', (err, listproduct) => {
         if (err) {
-          res.status(500).json({ message: 'Erro ao ler os dados.' });
+          return res.status(401).json({
+            'success': 'false',
+            'message': 'Erro ao ler os dados.'
+            
+          });
         } else {
           let listdados = [];
           if (listproduct) {
@@ -41,7 +45,7 @@ function PostProducts(req, res) {
             
             if (err) {
               
-              return res.status(400).json({
+              return res.status(401).json({
                 'success': 'false',
                 'message': err
               })
@@ -57,14 +61,8 @@ function PostProducts(req, res) {
           })
         }
       });
-    
   } catch(error) {
-    
-    return res.status(400).json({
-      'success': 'false',
-      'message': error.message
-    })
-    
+    console.log(error.message)
   }
   
 }

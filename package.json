@@ -4,7 +4,7 @@
   "description": "API para add, deletar e obter produtos",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
   },
   "author": "OnzeApp's",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "dotenv": "^16.1.3",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
-    "helmet": "^7.0.0"
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.0"
   }
 }

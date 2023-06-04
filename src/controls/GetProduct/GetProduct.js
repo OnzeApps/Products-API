@@ -1,33 +1,34 @@
 const fs = require('fs');
 
-function GetListProduct(res) {
-  fs.readFile('./database/database.json', 'utf8', (err, getlist) => {
-    if (err) {
-      return res.status(400).json({
-        'success': 'false',
-        'message': err
-      });
-    } else {
-      
-      try {
-        
-        const dados = JSON.parse(getlist);
-        const list = dados;
-        res.status(200).json({
-          'success': 'true',
-          list
+const GetListProduct = async (req, res) => {
+  try {
+    const database = './database/database.json';
+    fs.readFile(database, 'utf8', (err, data) => {
+      if (err) {
+        return res.status(401).json({
+          success: false,
+          message: err
         })
-      } catch(error) {
-        
-        res.status(400).json({
-          'success': 'false',
-          'message': error.message
-        })
-        
       }
       
-    }
-  });
+      const jsonList = JSON.parse(data);
+      const list = jsonList;
+      
+      return res.status(200).json({
+        success: true,
+        list
+      })
+      
+    });
+    
+  } catch(error) {
+    
+    return res.status(401).json({
+      success: false,
+      message: error.message
+    })
+    
+  }
 }
 
 module.exports = { GetListProduct }

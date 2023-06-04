@@ -10,6 +10,5 @@ app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(route)
 
-
 app.listen(3000, () => {
 })
